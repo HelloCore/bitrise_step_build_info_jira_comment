@@ -18,9 +18,9 @@ description: |
   The regex pattern to look for Jira tasks is "<project_prefix>[0-9]{1,5}"
   
   This step is using Jira API v2.
-website: https://github.com/DroidsOnRoids/bitrise_step_build_info_jira_comment
-source_code_url: https://github.com/DroidsOnRoids/bitrise_step_build_info_jira_comment
-support_url: https://github.com/DroidsOnRoids/bitrise_step_build_info_jira_comment/issues
+website: https://github.com/HelloCore/bitrise_step_build_info_jira_comment
+source_code_url: https://github.com/HelloCore/bitrise_step_build_info_jira_comment
+support_url: https://github.com/HelloCore/bitrise_step_build_info_jira_comment/issues
 host_os_tags:
   - osx-10.10
   - ubuntu-16.04
