@@ -14,6 +14,8 @@ reset=$'\e[0m'
 LAST_COMMIT_SHA="HEAD"
 FILTERED_ISSUE_PATH="/tmp/tmp-filtered-issue.txt"
 
+echo "------------"
+
 . ./get_last_succesfully_hash.sh
 
 echo ""
