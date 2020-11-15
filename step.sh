@@ -53,7 +53,7 @@ then
     do  
 		
 		echo "POSTING: $issue_no"
-		JIRA_URL="https://${backlog_default_url}/rest/api/3/issue/${issue_no}/comment"
+		JIRA_URL="https://${backlog_default_url}/rest/api/2/issue/${issue_no}/comment"
 		res="$(curl --write-out %{response_code} --silent --output /dev/null --user $jira_user:$jira_token --request POST --header "Content-Type: application/json" --data-binary "${comment_data}" --url $JIRA_URL)"
 		if test "$res" == "201"
 		then
