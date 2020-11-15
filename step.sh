@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # set -e
-
-cd "$(dirname "$0")"
+ROOT_PATH="$(dirname "$0")"
+echo $ROOT_PATH
 
 red=$'\e[31m'
 green=$'\e[32m'
@@ -18,7 +18,7 @@ CURRENT_COMMIT_SHA=$(git "log" "-1" "--format=%H")
 
 echo "------------"
 
-. ./get_last_succesfully_hash.sh
+. $ROOT_PATH/get_last_succesfully_hash.sh
 
 echo ""
 echo "------------"
@@ -27,7 +27,7 @@ echo "CURRENT_COMMIT_SHA: $CURRENT_COMMIT_SHA"
 echo "------------"
 echo ""
 
-./find_issue_logs.sh "$CURRENT_COMMIT_SHA" "$LAST_SUCCESS_COMMIT_SHA"
+$ROOT_PATH/find_issue_logs.sh "$CURRENT_COMMIT_SHA" "$LAST_SUCCESS_COMMIT_SHA"
 
 escaped_jira_comment=$(echo "$jira_comment" | perl -pe 's/\n/\\n/g' | sed 's/.\{2\}$//')
 
