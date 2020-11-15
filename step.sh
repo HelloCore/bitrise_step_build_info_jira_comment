@@ -14,7 +14,7 @@ reset=$'\e[0m'
 FILTERED_ISSUE_PATH="/tmp/tmp-filtered-issue.txt"
 
 LAST_SUCCESS_COMMIT_SHA="HEAD"
-CURRENT_COMMIT_SHA="$commit"
+CURRENT_COMMIT_SHA=$(git "log" "-1" "--format=%H")
 
 echo "------------"
 
