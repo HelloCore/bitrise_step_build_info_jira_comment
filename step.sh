@@ -53,12 +53,14 @@ then
     do  
 		
 		echo "POSTING: $issue_no"
-		res="$(curl --write-out %{response_code} --silent --output /dev/null --user $jira_user:$jira_token --request POST --header "Content-Type: application/json" --data-binary "${comment_data}" --url https://${backlog_default_url}/rest/api/2/issue/${issue_no}/comment)"
+		JIRA_URL="https://${backlog_default_url}/rest/api/3/issue/${issue_no}/comment"
+		res="$(curl --write-out %{response_code} --silent --output /dev/null --user $jira_user:$jira_token --request POST --header "Content-Type: application/json" --data-binary "${comment_data}" --url $JIRA_URL)"
 		if test "$res" == "201"
 		then
 			echo $'\t'$'\t'"${green}✅ Success!${reset}"
 		else
 			echo $'\t'$'\t'"${red}❗️ Failed${reset}"
+			echo "JIRA_URL: $JIRA_URL"
 			echo $res
 		fi
     done <"$FILTERED_ISSUE_PATH"
