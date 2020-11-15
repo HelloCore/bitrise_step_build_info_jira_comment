@@ -13,6 +13,7 @@ reset=$'\e[0m'
 
 LAST_COMMIT_SHA="HEAD"
 CURRENT_COMMIT_SHA=`git log -1 --pretty=format:"%H"`
+FILTERED_ISSUE_PATH="/tmp/tmp-filtered-issue.txt"
 
 . ./get_last_succesfully_hash.sh
 
@@ -38,10 +39,10 @@ EOF
 
 comment_data="$(create_comment_data)"
 
-echo "${blue}⚡ Posting to:"
 
 if [ -f $FILTERED_ISSUE_PATH ]
 then
+	echo "${blue}⚡ Posting to:"
     while IFS= read -r issue_no
     do  
 		res="$(curl --write-out %{response_code} --silent --output /dev/null --user $jira_user:$jira_token --request POST --header "Content-Type: application/json" --data-binary "${comment_data}" --url https://${backlog_default_url}/rest/api/2/issue/${issue_no}/comment)"
