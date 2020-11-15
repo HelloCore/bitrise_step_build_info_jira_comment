@@ -8,10 +8,11 @@ echo "BITRISE_TRIGGERED_WORKFLOW_TITLE: $BITRISE_TRIGGERED_WORKFLOW_TITLE"
 echo '-----------'
 
 URL="https://api.bitrise.io/v0.1/apps/$BITRISE_APP_SLUG/builds"
-API_RESPONSE=$(curl -s --request GET --url "$URL" \
+API_RESPONSE=$(curl -G \
     --data-urlencode "branch=$BITRISE_GIT_BRANCH" \
     --data-urlencode "workflow=$BITRISE_TRIGGERED_WORKFLOW_TITLE" \
     --data-urlencode "status=1" \
+    --url "$URL" \
     -H "accept: application/json" \
     -H "Authorization: $access_token")
 
