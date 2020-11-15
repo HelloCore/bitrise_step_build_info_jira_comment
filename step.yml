@@ -78,6 +78,11 @@ inputs:
       is_required: true
       is_expand: true
       is_sensitive: true
+  - commit: "$BITRISE_GIT_COMMIT"
+    opts:
+      category: Clone Config
+      title: "Git Commit to clone"
+      is_dont_change_value: true
   - project_prefix:
     opts:
       title: "Jira project prefix"
