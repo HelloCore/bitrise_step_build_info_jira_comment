@@ -66,6 +66,18 @@ toolkit:
 
 
 inputs:
+  - access_token:
+    opts:
+      title: Bitrise Access Token
+      summary: Your access token
+      description: |
+          Your access token
+          
+          To acquire a `Personal Access Token` for your user, sign in with that user on [bitrise.io](https://bitrise.io),  
+          go to your `Account Settings` page, and select the [Security tab](https://www.bitrise.io/me/profile#/security) on the left side.
+      is_required: true
+      is_expand: true
+      is_sensitive: true
   - project_prefix:
     opts:
       title: "Jira project prefix"
