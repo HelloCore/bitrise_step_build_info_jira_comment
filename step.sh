@@ -11,8 +11,10 @@ magenta=$'\e[35m'
 cyan=$'\e[36m'
 reset=$'\e[0m'
 
-LAST_COMMIT_SHA="HEAD"
 FILTERED_ISSUE_PATH="/tmp/tmp-filtered-issue.txt"
+
+LAST_SUCCESS_COMMIT_SHA="HEAD"
+CURRENT_COMMIT_SHA=$(git log -1 --pretty=format:'%s %b')
 
 echo "------------"
 
@@ -20,12 +22,12 @@ echo "------------"
 
 echo ""
 echo "------------"
-echo "LAST_COMMIT_SHA: $LAST_COMMIT_SHA"
-echo "BITRISE_GIT_COMMIT: $BITRISE_GIT_COMMIT"
+echo "LAST_SUCCESS_COMMIT_SHA: $LAST_SUCCESS_COMMIT_SHA"
+echo "CURRENT_COMMIT_SHA: $CURRENT_COMMIT_SHA"
 echo "------------"
 echo ""
 
-./find_issue_logs.sh "$BITRISE_GIT_COMMIT" "$LAST_COMMIT_SHA"
+./find_issue_logs.sh "$CURRENT_COMMIT_SHA" "$LAST_SUCCESS_COMMIT_SHA"
 
 escaped_jira_comment=$(echo "$jira_comment" | perl -pe 's/\n/\\n/g' | sed 's/.\{2\}$//')
 

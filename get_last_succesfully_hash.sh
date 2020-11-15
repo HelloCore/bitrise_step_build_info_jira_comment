@@ -11,10 +11,10 @@ echo "Calling URL: $URL"
 
 if [[ $API_RESPONSE =~ $LAST_BUILD_REGEX ]]; then
     echo "FOUND LAST_COMMIT_SHA ${BASH_REMATCH[1]}"
-    export LAST_COMMIT_SHA="${BASH_REMATCH[1]}"
+    export LAST_SUCCESS_COMMIT_SHA="${BASH_REMATCH[1]}"
 else
     echo "LAST_COMMIT_SHA NOT FOUND"
     echo "RESPONSE"
     echo $API_RESPONSE    
-    export LAST_COMMIT_SHA="HEAD"
+    export LAST_SUCCESS_COMMIT_SHA="HEAD"
 fi
