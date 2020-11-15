@@ -17,7 +17,6 @@ API_RESPONSE=$(curl -G \
     -H "Authorization: $access_token")
 
 echo "Calling URL: $URL"
-echo $API_RESPONSE > test.json
 
 if [[ $API_RESPONSE =~ $LAST_BUILD_REGEX ]]; then
     echo "FOUND LAST_COMMIT_SHA ${BASH_REMATCH[1]}"

@@ -24,6 +24,7 @@ echo ""
 echo "------------"
 echo "LAST_SUCCESS_COMMIT_SHA: $LAST_SUCCESS_COMMIT_SHA"
 echo "CURRENT_COMMIT_SHA: $CURRENT_COMMIT_SHA"
+echo "backlog_default_url: $backlog_default_url"
 echo "------------"
 echo ""
 
@@ -42,12 +43,16 @@ EOF
 
 comment_data="$(create_comment_data)"
 
+echo "COMMENT_DATA"
+echo $comment_data
 
 if [ -f $FILTERED_ISSUE_PATH ]
 then
 	echo "${blue}⚡ Posting to:"
     while IFS= read -r issue_no
     do  
+		
+		echo "POSTING: $issue_no"
 		res="$(curl --write-out %{response_code} --silent --output /dev/null --user $jira_user:$jira_token --request POST --header "Content-Type: application/json" --data-binary "${comment_data}" --url https://${backlog_default_url}/rest/api/2/issue/${issue_no}/comment)"
 		if test "$res" == "201"
 		then
