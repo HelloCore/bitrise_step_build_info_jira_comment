@@ -25,5 +25,5 @@ else
     echo "LAST_COMMIT_SHA NOT FOUND"
     echo "RESPONSE"
     echo $API_RESPONSE    
-    export LAST_SUCCESS_COMMIT_SHA="HEAD"
+    export LAST_SUCCESS_COMMIT_SHA="HEAD^"
 fi
