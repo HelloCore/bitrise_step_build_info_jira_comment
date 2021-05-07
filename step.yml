@@ -87,7 +87,6 @@ inputs:
         e.g. "PROJ-"
       is_expand: true
       is_required: true
-      value_options: []
   - backlog_default_url:
     opts:
       title: "Jira domain"
